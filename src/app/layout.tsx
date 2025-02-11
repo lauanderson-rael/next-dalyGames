@@ -1,27 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/header";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { Header } from '../components/header'
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Daly games - descubra os melhores jogos para se divertir.",
-  description: "Mais de 10 mil jogos separados e organizados para voce.",
-  keywords: [
-    "games",
-    "jogos online",
-    "steam  ",
-  ],
+  title: 'Daly Games - Descrubra jogos incríveis para se divertir.',
+  description: 'Mais de 10 mil jogos separados e organizados.',
+  keywords: ['games', 'jogos', 'steam'],
   openGraph: {
-    images: [`${process.env.PROJECT_UR}/preview.png`]
+    images: [`${process.env.PROJECT_URL}/preview.png`]
   },
   robots: {
     index: true,
@@ -33,21 +22,19 @@ export const metadata: Metadata = {
       noimageindex: true,
     }
   }
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={inter.className}>
         <Header />
         {children}
       </body>
     </html>
-  );
+  )
 }
